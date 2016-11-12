@@ -1,0 +1,71 @@
+
+########################################
+##########GRAPHS
+#################################
+# Graphs of Ungulate Exclosure Experiment without Rota
+# Author: Ann Gawel
+# last updated Sep 22, 2016 by AMG 
+########################
+
+########################################
+ggplot(ungulate, aes(x=trt, y=propalive))+
+  geom_boxplot()+
+  facet_grid(.~species)
+
+
+#############
+# calculate binomial confidence intervals on raw data
+library(binom)
+library(plyr)
+binom.confint(, n, conf.level = 0.95, methods = "all") #not working
+prop.test(sum(ungulate$alive),sum(ungulate$numplant))$conf.int[1]
+
+#create dataframe with binomial confidence intervals
+newdf<-ddply(ungulate,.(trt, species),summarise,
+             prop=sum(alive)/sum(numplant),
+             low=prop.test(sum(alive),sum(numplant))$conf.int[1],
+             upper=prop.test(sum(alive),sum(numplant))$conf.int[2])
+
+#newdf<-ddply(ungulate,.(island, trt, species),summarise,
+#              prop=binom.confint(alive, numplant, conf.level=0.95, 
+#                                 methods="agresti-coull")$mean[1], 
+#              low=binom.confint(alive, numplant, conf.level=0.95, 
+#                                methods="agresti-coull")$lower[1], 
+#              upper=binom.confint(alive, numplant, conf.level=0.95, 
+#                                  methods="agresti-coull")$upper[1])
+
+##order x-axis by biggest difference between treatments to least##
+##Order from most to least significant: CAPA, PSMA, MOCI, PROB, AGMA, OCOP##
+newdf$species <- factor(newdf$species, levels = c("carica","psychotria","morinda","premna","aglaia","neiso"))
+###add asterisks above first four that have significant difference between treatments by##
+###adding data frame with coordinates###
+label.df <- data.frame(species = c("carica", "psychotria","morinda","premna"),
+                       prop = c(0.9, 0.9,0.9,0.9))
+
+###PROBLEM: ggplot works if I don't attempt to add the data.frame to label the significant
+###bars, but as soon as I do, it doesn't recognize values in newdf####
+
+#Make graph
+
+g <- gridExtra::borderGrob(type=9, colour="black", lwd=2) ##notworking - do we need this?
+
+ggplot(newdf,aes(species,prop, ymin=low, ymax=upper, fill=trt))+
+  geom_bar(stat="identity", width=0.7, position=position_dodge(width=0.7))+
+  geom_errorbar(width=0.2, position=position_dodge(width=0.7))+
+  ylab("Proportion seedling survival")+
+  ylim(0,1.1)+
+  scale_x_discrete("Species", labels=c("Carica", "Psychotria","Morinda","Premna","Aglaia","Ochrosia"))+
+  scale_fill_manual(values=c("lightgrey", "darkgrey"), breaks=c("fenced","ungulate"), labels=c("No ungulates", "Ungulates"))+
+  theme_minimal()+
+  theme(axis.title.y=element_text(size=10, face="bold"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour="black", fill=NA),
+        axis.line.x=element_line(colour="black"), 
+        axis.line.y=element_line(colour="black"), 
+        legend.title=element_blank(),
+        legend.text=element_text(size=10),
+        strip.text=element_text(size=10, face="italic"),
+        strip.background = element_rect(colour = "white", fill="white"))
+
