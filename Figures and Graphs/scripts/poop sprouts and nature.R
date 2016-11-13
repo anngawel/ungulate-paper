@@ -1,12 +1,15 @@
 ####################################################
 #####Figures for poop gerimination comparing species
 #####abundance in poop vs. species abundance in nature
-#####Last edited by AMG 2016NOV11####################
+#####Last edited by AMG 2016NOV13####################
 #####################################################
 
 ###load packages
 library(ggplot2)
 library(labeling)
+library(tidyr)
+library(reshape2)
+library(dplyr)
 
 ####make a bar graph for each of these things###
 ###same x axis: plant species, different y axes:
@@ -26,7 +29,9 @@ bardata<-read.csv("pooportions_nature_ungulate.csv")
 str(bardata)
 
 ####first need to decide how many species should stay on graph
-####there are too many (39) from nature
+####there are too many (39) from nature, take top 5, and any other native species that
+####appear in poop, which are Morinda and Ficus, can keep all exotic spp###
+
 ####second need to subset 
 subbardata <- subset(bardata, prop_nature > 0.02 | plant_spp =="Morinda citrifolia" | 
                   plant_spp == "Ficus prolixa" | native_exotic =="exotic", 
