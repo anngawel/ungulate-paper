@@ -18,7 +18,10 @@ library(dplyr)
 ####combined vegportions.csv (nature), pigpooportions.csv (pig scat), and 
 ####deerpooportions.csv (deer scat)#############
 
+
 ###see if ggplot geom_bar is working###
+vegportions<-read.csv("vegportions.csv")
+
 ggplot(vegportions, aes(plant_spp, prop)) +
   geom_bar(stat = "identity") +
   theme_bw()+
@@ -68,11 +71,17 @@ exotic$plant_spp <- factor(exotic$plant_spp,
 ###exotic species to stop appearing the native half?
 ###resolved above by subsetting into native and exotic
 
+##can I change facet labels?###
+facet_names <- c(
+  `prop_nature` = "Nature",
+  `prop_pig` = "Pig scat",
+  `prop_deer` = "Deer scat")
+
 ###now to graph###
 plot1<-ggplot(native,aes(plant_spp,proportion))+
   geom_bar(position="dodge",stat="identity")+
   coord_flip()+
-  facet_grid(. ~ treatment) +
+  facet_grid(. ~ treatment,labeller = as_labeller(facet_names)) +
   xlab("Species")+
   ylab("Proportional abundance")+
   theme_minimal()+
@@ -84,7 +93,7 @@ plot1<-ggplot(native,aes(plant_spp,proportion))+
 plot2<-ggplot(exotic,aes(plant_spp,proportion))+
   geom_bar(position="dodge",stat="identity")+
   coord_flip()+
-  facet_grid(. ~ treatment) +
+  facet_grid(. ~ treatment,labeller = as_labeller(facet_names)) +
   xlab("Species")+
   ylab("Proportional abundance")+
   theme_minimal()+
