@@ -59,6 +59,7 @@ exotic<-subset(datalong, native_exotic == "exotic")
 str(exotic)
 levels(exotic$native_exotic)
 exotic$native_exotic<-factor(exotic$native_exotic)
+##reorder
 exotic$plant_spp <- factor(exotic$plant_spp, 
                            levels = exotic$plant_spp[order(exotic$proportion)])
 
@@ -91,7 +92,8 @@ plot2<-ggplot(exotic,aes(plant_spp,proportion))+
   theme(axis.title.y=element_text(size=10, face="bold"))+
   ggtitle("Exotic plants")
 
-multiplot <- function(..., plotlist = NULL, file, cols = 2, layout = NULL) {
+
+multiplot <- function(..., plotlist = NULL, file, cols=1, rows=1, layout = NULL) {
   require(grid)
   plots <- c(list(...), plotlist)
   numPlots = length(plots)
@@ -113,8 +115,6 @@ multiplot <- function(..., plotlist = NULL, file, cols = 2, layout = NULL) {
 }
 
 
-multiplot(plot1,plot2,rows=2)
+multiplot(plot1,plot2,rows=2, cols=1)
 
 
-###how do I get native species to stop appearing in the exotic half and 
-###exotic species to stop appearing the native half?
