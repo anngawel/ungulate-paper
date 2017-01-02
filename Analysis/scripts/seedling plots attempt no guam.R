@@ -1,15 +1,14 @@
 #######################
 # Analysis & Graphs of Ungulate Exclosure Experiment without Rota
 # Author: Ann Gawel
-# last updated Sep 22, 2016 by AMG 
+# last updated Jan 2, 2017 by AMG 
 ########################
 
 library(lme4)
-library(ggplot2)
 library(AICcmodavg)
 
 #import dataset 
-ungulate <- read.csv("~/Ungulate paper/stats and figures/ungulate2.csv")
+ungulate <- read.csv("~/ungulate-paper/Analysis/data/raw data/ungulate2.csv")
 
 #summarize data
 summary(ungulate)
@@ -126,6 +125,9 @@ aictab(list(trtps,nullps), modnames=c("trtps", "nullps"))
 
 confint(trtps,method="Wald")
 
+###use ggplot file under 
+###figures and graphs scripts instead of the script below###
+########################################
 ########################################
 ##########GRAPHS##########
 ########################################
