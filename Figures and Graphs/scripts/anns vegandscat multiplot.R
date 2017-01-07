@@ -33,7 +33,9 @@ p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
   theme(axis.line = element_line())+ 
   theme (panel.background = element_rect(fill = "transparent", colour = NA), 
          panel.grid.minor = element_line(colour = NA), 
-         panel.grid.major = element_line(colour = NA), legend.position="none")
+         panel.grid.major = element_line(colour = NA), legend.position="none")+
+  theme(axis.title.x=element_text(size=9))+
+  theme(axis.title.y=element_text(size=9))
   
 
 
@@ -53,7 +55,9 @@ p2<-ggplot(vegandscat_reform, aes(y=sdls, x=pig, color= native_exotic))+
                       values = c("gray", "black")) +   
   scale_shape_manual(name = "Nat/Exo",
                      labels = c("Exotic", "Native"),
-                     values = c(19, 17))
+                     values = c(19, 17))+
+  theme(axis.title.x=element_text(size=9))+
+  theme(axis.title.y=element_text(size=9))
 
 ###PIGS AND VINES####
 p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
@@ -65,7 +69,9 @@ p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
   theme(axis.line = element_line())+ 
   theme (panel.background = element_rect(fill = "transparent", colour = NA), 
          panel.grid.minor = element_line(colour = NA), 
-         panel.grid.major = element_line(colour = NA), legend.position="none")
+         panel.grid.major = element_line(colour = NA), legend.position="none")+
+  theme(axis.title.x=element_text(size=9))+
+  theme(axis.title.y=element_text(size=9))
   
   
 
@@ -81,7 +87,9 @@ p4<- ggplot(data=vegandsign, aes(y=totalsdl, x=deer))+
   theme(axis.line = element_line())+ 
   theme (panel.background = element_rect(fill = "transparent", colour = NA), 
          panel.grid.minor = element_line(colour = NA), 
-         panel.grid.major = element_line(colour = NA), legend.position="none")
+         panel.grid.major = element_line(colour = NA), legend.position="none")+
+  theme(axis.title.x=element_text(size=9))+
+  theme(axis.title.y=element_text(size=9))
 
 ####X vs 2 Y's same plot####
 ###I USED THIS INSTEAD OF THE INDIVIDUAL NATIVE AND EXOTIC PLOTS####
@@ -100,7 +108,9 @@ p5<-ggplot(vegandscat_reform, aes(y=sdls, x=deer, color= native_exotic))+
                       values = c("gray", "black")) +   
   scale_shape_manual(name = "Nat/Exo",
                      labels = c("Exotic", "Native"),
-                     values = c(19, 17))
+                     values = c(19, 17))+
+  theme(axis.title.x=element_text(size=9))+
+  theme(axis.title.y=element_text(size=9))
   
 
 ###DEER and VINES###
@@ -113,7 +123,9 @@ p6<- ggplot(data=vegandsign, aes(y=vines, x=deer))+
   theme(axis.line = element_line())+ 
   theme (panel.background = element_rect(fill = "transparent", colour = NA), 
          panel.grid.minor = element_line(colour = NA), 
-         panel.grid.major = element_line(colour = NA), legend.position="none")
+         panel.grid.major = element_line(colour = NA), legend.position="none")+
+  theme(axis.title.x=element_text(size=9))+
+  theme(axis.title.y=element_text(size=9))
   
 
 ###now that you have individual plots, combine into multiplot using function below###
@@ -146,11 +158,6 @@ par(mfrow=c(2,2))
 
 ###MULTIPLOT###
 multiplot(p1,p2,p3,p4,p5,p6,cols=2)
-
-
-
-
-
 
 
 
