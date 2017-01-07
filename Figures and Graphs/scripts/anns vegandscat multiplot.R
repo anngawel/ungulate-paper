@@ -24,55 +24,97 @@ str(vegandscat_reform)
 ###PIG PLOTS, LEFT-HAND PANELS####
 
 ###PIG and TOTAL SEEDLINGS###
-p1<- 
+p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
+  geom_smooth(se=FALSE, colour="black",method="lm",formula=y~x)+
+  geom_point()+
+  xlab("Pig scats per 100m2")+
+  ylab("Total seedling abundance")+
+  theme_bw() + 
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA), legend.position="none")
+  
 
 
 ####PIG AND TWO TRENDLINES NATIVE EXOTIC SEEDLINGS###
 p2<-ggplot(vegandscat_reform, aes(y=sdls, x=pig, color= native_exotic))+
   geom_smooth(se=FALSE, method="lm",formula=y~x)+
   geom_point()+
-  xlab("Pig faecal groups per 100m2")+
+  xlab("Pig scats per 100m2")+
   ylab("Seedling abundance")+
-  theme_bw()
-p2<-p2 + layer(geom = "point") + theme(axis.line = element_line())
-p2<-p2 + theme (panel.background = element_rect(fill = "transparent", colour = NA), panel.grid.minor = element_line(colour = NA), panel.grid.major = element_line(colour = NA), legend.position="none")
-p2 <-p2 + scale_colour_manual(name = "Nat/Exo",
-                              labels = c("Exotic", "Native"),
-                              values = c("gray", "black")) +   
+  theme_bw() + 
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA), legend.position="none")+ 
+  scale_colour_manual(name = "Nat/Exo",
+                      labels = c("Exotic", "Native"),
+                      values = c("gray", "black")) +   
   scale_shape_manual(name = "Nat/Exo",
                      labels = c("Exotic", "Native"),
-                     values = c(19, 17)) 
+                     values = c(19, 17))
 
 ###PIGS AND VINES####
-p3<-qplot(pig,vines,data=vegandsign, geom=c("point","smooth"), se=FALSE, method="lm", formula=y~x, xlab="Pig faecal groups per 100m2",ylab="Vine abundance") + theme (panel.background = element_rect(fill = "transparent", colour = NA), panel.grid.minor = element_line(colour = NA), panel.grid.major = element_line(colour = NA))
-p3<-p3 + layer(geom = "point") + theme(axis.line = element_line())
+p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
+  geom_smooth(se=FALSE, colour="black",method="lm",formula=y~x)+
+  geom_point()+
+  xlab("Pig scats per 100m2")+
+  ylab("Vine abundance")+
+  theme_bw() + 
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA), legend.position="none")
+  
+  
 
+####DEER PLOTS - RIGHT-HAND PANELS#################
 
-p4<-qplot(deer, totalsdl, data=vegandsign, geom = c("point","smooth"), se=FALSE, method="lm", formula=y~log(x), xlab="Deer faecal groups per 100m2", ylab="Total seedling abundance") + theme (panel.background = element_rect(fill = "transparent", colour = NA), panel.grid.minor = element_line(colour = NA), panel.grid.major = element_line(colour = NA))
-p4<-p4 + layer(geom = "point") + theme(axis.line = element_line())
+###deer and total seedlings####
+p4<- ggplot(data=vegandsign, aes(y=totalsdl, x=deer))+
+  geom_smooth(se=FALSE, colour="black",method="lm",formula=y~log(x))+
+  geom_point()+
+  xlab("Deer scats per 100m2")+
+  ylab("Total seedling abundance")+
+  theme_bw() + 
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA), legend.position="none")
 
-####DEER#################
 ####X vs 2 Y's same plot####
 ###I USED THIS INSTEAD OF THE INDIVIDUAL NATIVE AND EXOTIC PLOTS####
-summary(vegandscat_reform)
 p5<-ggplot(vegandscat_reform, aes(y=sdls, x=deer, color= native_exotic))+
-  geom_smooth(se=FALSE, method="lm", formula=y~log(x))+
+  geom_smooth(se=FALSE, method="lm",formula=y~log(x))+
   geom_point()+
-  xlab("Deer faecal groups per 100m2")+
+  xlab("Deer scats per 100m2")+
   ylab("Seedling abundance")+
-  theme_bw()
-p5<-p5 + layer(geom = "point") + theme(axis.line = element_line())
-p5<-p5 + theme (panel.background = element_rect(fill = "transparent", colour = NA), panel.grid.minor = element_line(colour = NA), panel.grid.major = element_line(colour = NA), legend.position="none")
-p5 <-p5 + scale_colour_manual(name = "Nat/Exo",
-                              labels = c("Exotic", "Native"),
-                              values = c("gray", "black")) +   
+  theme_bw() + 
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA), legend.position="none")+ 
+  scale_colour_manual(name = "Nat/Exo",
+                      labels = c("Exotic", "Native"),
+                      values = c("gray", "black")) +   
   scale_shape_manual(name = "Nat/Exo",
                      labels = c("Exotic", "Native"),
-                     values = c(19, 17))           
+                     values = c(19, 17))
+  
 
 ###DEER and VINES###
-p6<-qplot(deer,vines,data=vegandsign, geom=c("point","smooth"), se=FALSE, method="lm", formula=y~log(x), xlab="Deer faecal groups per 100m2",ylab="Vine abundance") + theme (panel.background = element_rect(fill = "transparent", colour = NA), panel.grid.minor = element_line(colour = NA), panel.grid.major = element_line(colour = NA))
-p6<-p6 + layer(geom = "point") + theme(axis.line = element_line())
+p6<- ggplot(data=vegandsign, aes(y=vines, x=deer))+
+  geom_smooth(se=FALSE, colour="black",method="lm",formula=y~log(x))+
+  geom_point()+
+  xlab("Deer scats per 100m2")+
+  ylab("Vine abundance")+
+  theme_bw() + 
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA), legend.position="none")
+  
 
 ###now that you have individual plots, combine into multiplot using function below###
 
@@ -103,7 +145,6 @@ multiplot <- function(..., plotlist = NULL, file, cols = 2, layout = NULL) {
 par(mfrow=c(2,2))
 
 ###MULTIPLOT###
-multiplot(p1,p2,p3,p4,cols=2) ##for deer only including diversity##
 multiplot(p1,p2,p3,p4,p5,p6,cols=2)
 
 
