@@ -11,16 +11,21 @@ library(ggplot2)
 
 ###upload dataset###
 vegandsign<-read.csv("~/ungulate-paper/Analysis/data/working data/vegandsign.csv")
+###upload reformatted csv where native/exotic is long-form column instead of
+###two columns#####
+vegandscat_reform<-read.csv("~/ungulate-paper/Analysis/data/working data/vegandscat_reform.csv")
+
 summary(vegandsign)
 str(vegandsign)
-
+summary(vegandscat_reform)
+str(vegandscat_reform)
 
 
 ###PIG PLOTS, LEFT-HAND PANELS####
 
 ###PIG and TOTAL SEEDLINGS###
-p1<-qplot(pig, totalsdl, data=vegandsign, geom = c("point","smooth"), se=FALSE, method="lm", formula=y~x, xlab="Pig faecal groups per 100 m2", ylab="Total seedling abundance") + theme (panel.background = element_rect(fill = "transparent", colour = NA), panel.grid.minor = element_line(colour = NA), panel.grid.major = element_line(colour = NA))
-p1<-p1 + layer(geom = "point") + theme(axis.line = element_line())
+p1<- 
+
 
 ####PIG AND TWO TRENDLINES NATIVE EXOTIC SEEDLINGS###
 p2<-ggplot(vegandscat_reform, aes(y=sdls, x=pig, color= native_exotic))+
