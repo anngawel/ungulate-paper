@@ -28,7 +28,7 @@ ggplot(vegportions, aes(plant_spp, prop)) +
   coord_flip()
 
 ####load merged data###
-bardata<-read.csv("pooportions_nature_ungulate.csv")
+bardata<-read.csv("~ungulate-paper/Analysis/data/working data/pooportions_nature_ungulate.csv")
 str(bardata)
 
 ####first need to decide how many species should stay on graph
@@ -99,7 +99,7 @@ plot2<-ggplot(exotic,aes(plant_spp,proportion))+
   theme_minimal()+
   theme(axis.title.x=element_text(size=10, face="bold"))+
   theme(axis.title.y=element_text(size=10, face="bold"))+
-  ggtitle("Exotic plants")
+  ggtitle("Non-native plants")
 
 
 multiplot <- function(..., plotlist = NULL, file, cols=1, rows=1, layout = NULL) {
