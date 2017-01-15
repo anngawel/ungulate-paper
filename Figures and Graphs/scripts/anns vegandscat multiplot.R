@@ -20,8 +20,17 @@ str(vegandsign)
 summary(vegandscat_reform)
 str(vegandscat_reform)
 
+###r-quared values for input###
+##> summary(lm(totalsdl~pig, vegandsign))$r.squared
+##[1] 0.001490327
+##> summary(lm(nativsdl~pig, vegandsign))$r.squared
+##[1] 0.002768039
+##> summary(lm(nonnativesdl~pig, vegandsign))$r.squared
+##[1] 0.02305202
+##> summary(lm(vines~pig, vegandsign))$r.squared
+##[1] 0.001429389
 
-###PIG PLOTS, LEFT-HAND PANELS####
+###PIG PLOTS, LEFT-HAND PANELS###
 
 ###PIG and TOTAL SEEDLINGS###
 p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
@@ -36,7 +45,6 @@ p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))
-  
 
 
 ####PIG AND TWO TRENDLINES NATIVE EXOTIC SEEDLINGS###
@@ -76,6 +84,15 @@ p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
   
 
 ####DEER PLOTS - RIGHT-HAND PANELS#################
+###r-squared values for input###
+summary(lm(totalsdl~log(deer), vegandsign))$r.squared
+###0.7069415
+summary(lm(nativsdl~log(deer), vegandsign))$r.squared
+###0.6409852
+summary(lm(nonnativesdl~log(deer), vegandsign))$r.squared
+###0.7917839
+summary(lm(vines~log(deer), vegandsign))$r.squared
+###0.7917234
 
 ###deer and total seedlings####
 p4<- ggplot(data=vegandsign, aes(y=totalsdl, x=deer))+
@@ -89,7 +106,8 @@ p4<- ggplot(data=vegandsign, aes(y=totalsdl, x=deer))+
          panel.grid.minor = element_line(colour = NA), 
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
-  theme(axis.title.y=element_text(size=9))
+  theme(axis.title.y=element_text(size=9))+
+  annotate("text", x = 7.2, y = 800, label = "r2 = 0.710")
 
 ####X vs 2 Y's same plot####
 ###I USED THIS INSTEAD OF THE INDIVIDUAL NATIVE AND EXOTIC PLOTS####
@@ -110,7 +128,9 @@ p5<-ggplot(vegandscat_reform, aes(y=sdls, x=deer, color= native_exotic))+
                      labels = c("Exotic", "Native"),
                      values = c(19, 17))+
   theme(axis.title.x=element_text(size=9))+
-  theme(axis.title.y=element_text(size=9))
+  theme(axis.title.y=element_text(size=9))+
+  annotate("text", x = 7.2, y = 750, label = "native r2 = 0.647")+
+  annotate("text", x = 7.2, y = 600, label = "non-native r2 = 0.696")
   
 
 ###DEER and VINES###
@@ -125,7 +145,8 @@ p6<- ggplot(data=vegandsign, aes(y=vines, x=deer))+
          panel.grid.minor = element_line(colour = NA), 
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
-  theme(axis.title.y=element_text(size=9))
+  theme(axis.title.y=element_text(size=9))+
+  annotate("text", x = 7.2, y = 220, label = "r2 = 0.751")
   
 
 ###now that you have individual plots, combine into multiplot using function below###
