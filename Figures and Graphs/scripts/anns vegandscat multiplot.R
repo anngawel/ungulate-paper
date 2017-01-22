@@ -44,7 +44,8 @@ p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
          panel.grid.minor = element_line(colour = NA), 
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
-  theme(axis.title.y=element_text(size=9))
+  theme(axis.title.y=element_text(size=9))+
+  annotate("text", x = 0.75, y = 800, label = "r2 = 0.001")
 
 
 ####PIG AND TWO TRENDLINES NATIVE EXOTIC SEEDLINGS###
@@ -65,7 +66,9 @@ p2<-ggplot(vegandscat_reform, aes(y=sdls, x=pig, color= native_exotic))+
                      labels = c("Exotic", "Native"),
                      values = c(19, 17))+
   theme(axis.title.x=element_text(size=9))+
-  theme(axis.title.y=element_text(size=9))
+  theme(axis.title.y=element_text(size=9))+
+  annotate("text", x = 0.75, y = 700, label = "native r2 = 0.003")+
+  annotate("text", x = 0.7, y = 500, label = "non-native r2 = 0.023")
 
 ###PIGS AND VINES####
 p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
@@ -79,7 +82,8 @@ p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
          panel.grid.minor = element_line(colour = NA), 
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
-  theme(axis.title.y=element_text(size=9))
+  theme(axis.title.y=element_text(size=9))+
+  annotate("text", x = 0.75, y = 200, label = "r2 = 0.001")
   
   
 
@@ -107,7 +111,7 @@ p4<- ggplot(data=vegandsign, aes(y=totalsdl, x=deer))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 7.2, y = 800, label = "r2 = 0.710")
+  annotate("text", x = 7.2, y = 800, label = "r2 = 0.707")
 
 ####X vs 2 Y's same plot####
 ###I USED THIS INSTEAD OF THE INDIVIDUAL NATIVE AND EXOTIC PLOTS####
@@ -129,8 +133,8 @@ p5<-ggplot(vegandscat_reform, aes(y=sdls, x=deer, color= native_exotic))+
                      values = c(19, 17))+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 7.2, y = 750, label = "native r2 = 0.647")+
-  annotate("text", x = 7.2, y = 600, label = "non-native r2 = 0.696")
+  annotate("text", x = 7.2, y = 750, label = "native r2 = 0.649")+
+  annotate("text", x = 7.2, y = 600, label = "non-native r2 = 0.792")
   
 
 ###DEER and VINES###
@@ -146,7 +150,7 @@ p6<- ggplot(data=vegandsign, aes(y=vines, x=deer))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 7.2, y = 220, label = "r2 = 0.751")
+  annotate("text", x = 7.2, y = 220, label = "r2 = 0.792")
   
 
 ###now that you have individual plots, combine into multiplot using function below###
