@@ -32,16 +32,29 @@ ggplot(veglonggu,aes(species,count))+
 ggplot(veglonggu,aes(deer,count))+
   geom_point()
 
+#Compare between sites##
 ggplot(veglonggu,aes(site,count, fill=species))+
   geom_bar(stat="identity", position=position_dodge())
 
+##species total abundance, seedling or adult###
 ggplot(veglonggu,aes(species,count, fill=adultorsdl))+
   geom_bar(stat="identity", position=position_dodge())
 
 ggplot(veglong,aes(species,count, fill=island))+
   geom_bar(stat="identity", position=position_dodge())
 
+ggplot(veglong, aes(deer, count, colour=species))+geom_point()
 
+ggplot(veglonggu, aes(y=count, x=deer, color= species))+
+  geom_smooth(se=FALSE, method="lm",formula=y~log(x))+
+  geom_point()+
+  xlab("Deer scats per 100m2")+
+  ylab("Count")+
+  theme(axis.line = element_line())+ 
+  theme (panel.background = element_rect(fill = "transparent", colour = NA), 
+         panel.grid.minor = element_line(colour = NA), 
+         panel.grid.major = element_line(colour = NA)) 
+ 
 
 
 
