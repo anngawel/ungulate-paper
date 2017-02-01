@@ -7,15 +7,21 @@ library(tidyr)
 library(dplyr)
 library(plyr)
 library(ggplot2)
+library(dplyr)
 
 ###load csv###
-proportions<-read.csv("~/ungulate-paper/Analysis/data/working data/pooportions_nature_ungulate.csv")
-veg<-read.csv("~/ungulate-paper/Analysis/data/working data/veg_guam_working.csv")
-veg_spp<-read.csv("~/ungulate-paper/Analysis/data/working data/veg totals by spp.csv")
+
+#proportions dataset has pig/deer scat data combined with relative abundance of adult trees
+proportions<-read.csv("Analysis/data/working data/pooportions_nature_ungulate.csv")
+
+#veg dataset is the full dataset from the vegetation surveys from Guam only
+veg<-read.csv("Analysis/data/working data/veg_guam_working.csv") 
+
+#veg_spp is the subset of the veg dataset for the 6 species used in the exclosure experiment
+veg_spp<-read.csv("Analysis/data/working data/veg totals by spp.csv")
 
 ###summaries###
 summary(veg_spp)
-
 
 ###use tidyr to convert data to long form###
 veglong <- gather(veg_spp, adultorsdl, count, adult, seedlings, 
@@ -29,8 +35,15 @@ veglonggu <- subset(veglong, island == "guam")
 ggplot(veglonggu,aes(species,count))+
   geom_bar(position="dodge",stat="identity")
 
-ggplot(veglonggu,aes(deer,count))+
-  geom_point()
+ggplot(veglonggu,aes(deer,count, color=species))+
+  geom_point()+
+  stat_smooth()+
+  ylim(0, 100)
+
+ggplot(veglonggu,aes(pig,count, color=species))+
+  geom_point()+
+  stat_smooth()+
+  ylim(0, 100)
 
 #Compare between sites##
 ggplot(veglonggu,aes(site,count, fill=species))+
