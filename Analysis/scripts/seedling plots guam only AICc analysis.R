@@ -7,33 +7,44 @@
 library(lme4)
 library(ggplot2)
 library(AICcmodavg)
+library(tidyr)
+library(lubridate)
+library(dplyr)
 
 #import dataset 
-ungulate <- read.csv("~/Ungulate paper/stats and figures/ungulate2.csv")
+ungulate <- read.csv("Analysis/data/raw data/ungulate2.csv")
 
 #summarize data
 summary(ungulate)
 
 #subset for Guam
-ungulate_gu <- ungulate[ which(ungulate$island=='guam'),]
 
+ungulate_gu <- subset(ungulate, island == "guam")
 
 ungulate<-ungulate_gu
-##keep working with "ungulate" to use old commands, but now only includes
+str(ungulate)
+
+ungulate$island<-factor(ungulate$island)
+ungulate$length.exposure<-factor(ungulate$length.exposure)
+
+##keep working with "ungulate" which now only includes
 ##guam##
+
 
 #create variable for survival
 survival<-cbind(ungulate$alive,ungulate$dead)
+ungulate$length.exposure<-as.numeric(ungulate$length.exposure) #changes values!!
 
 #####FULL#####
 
-full2way<-glmer(survival~species*trt+(1|site),family=binomial,data=ungulate)
+full3way <- glmer(survival~species*trt*length.exposure+(1|site), family=binomial, data = ungulate)
+twoway<-glmer(survival~species*trt+(1|site),family=binomial,data=ungulate)
 species<-glmer(survival~species+(1|site), family=binomial, data=ungulate)
 trt<-glmer(survival~trt+(1|site), family=binomial, data=ungulate)
 
-aictab(list(full2way, species, trt), modnames=c("full2way", "species", "trt")) 
-#full2way is best fitting model
-confint(full2way,method="Wald")
+aictab(list(full3way, twoway, species, trt), modnames=c("full3way", "twoway", "species", "trt")) 
+#twoway is best fitting model
+confint(twoway,method="Wald")
 
 #Species seems to matter more than treatment, so will analyze separately by species now. 
 
@@ -52,6 +63,7 @@ aictab(list(trtag, nullag), modnames=c("trtag", "nullag"))
 confint(nullag,method="Wald")
 
 #######NEISO########
+##***Neisosperma is now called Ochrosia, so will appear as "Ochrosia oppositifolia" in figures and text
 neiso<-subset(ungulate,species=="neiso")
 survivalne<-cbind(neiso$alive,neiso$dead)
 

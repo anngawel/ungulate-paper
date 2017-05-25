@@ -1,6 +1,6 @@
 #########################################################
 ########POOP SPROUTS data exploration and cleaning########
-#######last edited by A. Gawel 2016NOV011################
+#######last edited by A. Gawel 2016NOV11################
 ########################################################
 
 #load libraries
