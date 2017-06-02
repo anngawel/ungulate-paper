@@ -1,7 +1,7 @@
 #######################
 # Analysis of Ungulate Exclosure Experiment without Rota
 # Author: Ann Gawel
-# last updated Sep 22, 2016 by AMG 
+# last updated May 25, 2017 by AMG 
 ########################
 
 library(lme4)
