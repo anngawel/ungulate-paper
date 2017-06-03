@@ -3,7 +3,7 @@
 ####ungulate abundance##########
 ####vs plant communities########
 ###last  modified by AMG########
-####Jun 02, 2017################
+####Jun 03, 2017################
 
 ###load library###
 library(dplyr)
@@ -22,20 +22,19 @@ str(vegandscat_reform)
 
 
 ###r-quared values for input###
-##> summary(lm(totalsdl~pig, vegandsign))$r.squared
+summary(lm(totalsdl~pig, vegandsign))$r.squared
 ##[1] 0.001490327
-##> summary(lm(nativsdl~pig, vegandsign))$r.squared
+summary(lm(nativsdl~pig, vegandsign))$r.squared
 ##[1] 0.002768039
-##> summary(lm(nonnativesdl~pig, vegandsign))$r.squared
+summary(lm(nonnativesdl~pig, vegandsign))$r.squared
 ##[1] 0.02305202
-##> summary(lm(vines~pig, vegandsign))$r.squared
+summary(lm(vines~pig, vegandsign))$r.squared
 ##[1] 0.001429389
 
 ###PIG PLOTS, LEFT-HAND PANELS###
 
 ###PIG and TOTAL SEEDLINGS###
 p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
-  geom_smooth(se=FALSE, colour="black",method="lm",formula=y~x)+
   geom_point()+
   xlab("Pig scats per 100m2")+
   ylab("Total seedling abundance")+
@@ -46,12 +45,11 @@ p1<- ggplot(data=vegandsign, aes(y=totalsdl, x=pig))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 0.75, y = 800, label = "r2 = 0.001")
+  annotate("text", x = 0.75, y = 800, label = "r2 = 0.00")
 
 
 ####PIG AND TWO TRENDLINES NATIVE EXOTIC SEEDLINGS###
 p2<-ggplot(vegandscat_reform, aes(y=sdls, x=pig, color= native_exotic))+
-  geom_smooth(se=FALSE, method="lm",formula=y~x)+
   geom_point()+
   xlab("Pig scats per 100m2")+
   ylab("Seedling abundance")+
@@ -68,12 +66,11 @@ p2<-ggplot(vegandscat_reform, aes(y=sdls, x=pig, color= native_exotic))+
                      values = c(19, 17))+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 0.75, y = 700, label = "native r2 = 0.003")+
-  annotate("text", x = 0.7, y = 500, label = "non-native r2 = 0.023")
+  annotate("text", x = 0.75, y = 700, label = "native r2 = 0.00")+
+  annotate("text", x = 0.7, y = 500, label = "non-native r2 = 0.02")
 
 ###PIGS AND VINES####
 p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
-  geom_smooth(se=FALSE, colour="black",method="lm",formula=y~x)+
   geom_point()+
   xlab("Pig scats per 100m2")+
   ylab("Vine abundance")+
@@ -84,7 +81,7 @@ p3<-ggplot(data=vegandsign, aes(y=vines, x=pig))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 0.75, y = 200, label = "r2 = 0.001")
+  annotate("text", x = 0.75, y = 200, label = "r2 = 0.00")
   
   
 
@@ -112,7 +109,7 @@ p4<- ggplot(data=vegandsign, aes(y=totalsdl, x=deer))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 7.2, y = 800, label = "r2 = 0.707")
+  annotate("text", x = 7.2, y = 800, label = "r2 = 0.71")
 
 ####X vs 2 Y's same plot####
 ###I USED THIS INSTEAD OF THE INDIVIDUAL NATIVE AND EXOTIC PLOTS####
@@ -134,8 +131,8 @@ p5<-ggplot(vegandscat_reform, aes(y=sdls, x=deer, color= native_exotic))+
                      values = c(19, 17))+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 7.2, y = 750, label = "native r2 = 0.649")+
-  annotate("text", x = 7.2, y = 600, label = "non-native r2 = 0.792")
+  annotate("text", x = 7.2, y = 750, label = "native r2 = 0.64")+
+  annotate("text", x = 7.2, y = 600, label = "non-native r2 = 0.79")
   
 
 ###DEER and VINES###
@@ -151,7 +148,7 @@ p6<- ggplot(data=vegandsign, aes(y=vines, x=deer))+
          panel.grid.major = element_line(colour = NA), legend.position="none")+
   theme(axis.title.x=element_text(size=9))+
   theme(axis.title.y=element_text(size=9))+
-  annotate("text", x = 7.2, y = 220, label = "r2 = 0.792")
+  annotate("text", x = 7.2, y = 220, label = "r2 = 0.79")
   
 
 ###now that you have individual plots, combine into multiplot using function below###
