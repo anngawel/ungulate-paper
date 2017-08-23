@@ -1,7 +1,7 @@
 #######################
 # Analysis of Ungulate Exclosure Experiment without Rota
 # Author: Ann Gawel
-# last updated May 25, 2017 by AMG 
+# last updated Aug 23, 2017 by AMG 
 ########################
 
 library(lme4)
@@ -26,7 +26,7 @@ str(ungulate)
 
 ungulate$island<-factor(ungulate$island)
 ungulate$length.exposure<-factor(ungulate$length.exposure)
-
+ungulate$site <- factor(ungulate$site)
 ##keep working with "ungulate" which now only includes
 ##guam##
 
@@ -37,7 +37,9 @@ ungulate$length.exposure<-as.numeric(ungulate$length.exposure) #changes values!!
 
 #####FULL#####
 
-full3way <- glmer(survival~species*trt*length.exposure+(1|site), family=binomial, data = ungulate)
+full3way <- glmer(survival~species+trt+length.exposure+(1|site), trt:length.exposure, trt:species, family=binomial, data = ungulate)
+notime <-glmer(survival~species+trt+(1|site), trt:species, family=binomial, data = ungulate)
+nospecies <- glmer(survival~trt+length.exposure+(1|site), trt:length.exposure, family=binomial, data = ungulate)
 twoway<-glmer(survival~species*trt+(1|site),family=binomial,data=ungulate)
 species<-glmer(survival~species+(1|site), family=binomial, data=ungulate)
 trt<-glmer(survival~trt+(1|site), family=binomial, data=ungulate)

@@ -3,9 +3,18 @@
 ##########GRAPHS
 #################################
 # Graphs of Ungulate Exclosure Experiment without Rota
-# Author: Ann Gawel
-# last updated Sep 22, 2016 by AMG 
+# Author: Ann Gawel (AMG)
+# last updated Aug 22, 2017 by AMG 
 ########################
+
+########################################
+###load data###
+#import dataset 
+ungulate <- read.csv("Analysis/data/raw data/ungulate2.csv")
+ungulate<-subset(ungulate, island == "guam")
+ungulate$island<-factor(ungulate$island)
+ungulate$site<-factor(ungulate$site)
+summary(ungulate)
 
 ########################################
 ggplot(ungulate, aes(x=trt, y=propalive))+
@@ -17,6 +26,8 @@ ggplot(ungulate, aes(x=trt, y=propalive))+
 # calculate binomial confidence intervals on raw data
 library(binom)
 library(plyr)
+library(ggplot2)
+library(ggsignif)
 binom.confint(, n, conf.level = 0.95, methods = "all") #not working
 prop.test(sum(ungulate$alive),sum(ungulate$numplant))$conf.int[1]
 
@@ -46,26 +57,10 @@ label.df <- data.frame(species = c("carica", "psychotria","morinda","premna"),
 ###bars, but as soon as I do, it doesn't recognize values in newdf####
 
 #Make graph
+###annotate to add asterisks and NS above bars###
 
-g <- gridExtra::borderGrob(type=9, colour="black", lwd=2) ##notworking - do we need this?
+p +annotate("text",x=1, y=0.9,label="*") +annotate("text",x=2,y=0.93,label="*") +annotate("text",x=3,y=0.94,label="*") +annotate("text",x=4,y=0.5,label="*")+annotate("text",x=5,y=0.93,label="NS")+annotate("text",x=6,y=0.97,label="NS")
 
-ggplot(newdf,aes(species,prop, ymin=low, ymax=upper, fill=trt))+
-  geom_bar(stat="identity", width=0.7, position=position_dodge(width=0.7))+
-  geom_errorbar(width=0.2, position=position_dodge(width=0.7))+
-  ylab("Proportion seedling survival")+
-  ylim(0,1.1)+
-  scale_x_discrete("Species", labels=c("Carica", "Psychotria","Morinda","Premna","Aglaia","Ochrosia"))+
-  scale_fill_manual(values=c("lightgrey", "darkgrey"), breaks=c("fenced","ungulate"), labels=c("No ungulates", "Ungulates"))+
-  theme_minimal()+
-  theme(axis.title.y=element_text(size=10, face="bold"),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        panel.border = element_rect(colour="black", fill=NA),
-        axis.line.x=element_line(colour="black"), 
-        axis.line.y=element_line(colour="black"), 
-        legend.title=element_blank(),
-        legend.text=element_text(size=10),
-        strip.text=element_text(size=10, face="italic"),
-        strip.background = element_rect(colour = "white", fill="white"))
+
+
 
