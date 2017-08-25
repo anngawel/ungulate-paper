@@ -18,35 +18,36 @@ ungulate <- read.csv("Analysis/data/raw data/ungulate2.csv")
 summary(ungulate)
 
 #subset for Guam
-
 ungulate_gu <- subset(ungulate, island == "guam")
-
 ungulate<-ungulate_gu
 str(ungulate)
 
 ungulate$island<-factor(ungulate$island)
+ungulate$site<-factor(ungulate$site)
 ungulate$length.exposure<-factor(ungulate$length.exposure)
-ungulate$site <- factor(ungulate$site)
+#ungulate$length.exposure <- as.integer(ungulate$length.exposure)
 ##keep working with "ungulate" which now only includes
 ##guam##
 
 
 #create variable for survival
 survival<-cbind(ungulate$alive,ungulate$dead)
-ungulate$length.exposure<-as.numeric(ungulate$length.exposure) #changes values!!
+
 
 #####FULL#####
-
-full3way <- glmer(survival~species+trt+length.exposure+(1|site), trt:length.exposure, trt:species, family=binomial, data = ungulate)
-notime <-glmer(survival~species+trt+(1|site), trt:species, family=binomial, data = ungulate)
-nospecies <- glmer(survival~trt+length.exposure+(1|site), trt:length.exposure, family=binomial, data = ungulate)
-twoway<-glmer(survival~species*trt+(1|site),family=binomial,data=ungulate)
+full <- glmer(survival~species+trt+species:trt+length.exposure+length.exposure:trt+(1|site), family=binomial, data = ungulate)
+notimetrtintxn <- glmer(survival~species+trt+species:trt+length.exposure+(1|site), family=binomial, data = ungulate)
+nosptrtintxn <- glmer(survival~species+trt+length.exposure+length.exposure:trt+(1|site), family=binomial, data = ungulate)
+notime <-glmer(survival~species*trt+(1|site), family=binomial, data = ungulate)
+nospecies <- glmer(survival~trt*length.exposure+(1|site), family=binomial, data = ungulate)
+notrt <- glmer(survival~species*length.exposure+(1|site), family=binomial, data = ungulate)
 species<-glmer(survival~species+(1|site), family=binomial, data=ungulate)
 trt<-glmer(survival~trt+(1|site), family=binomial, data=ungulate)
+time <- glmer(survival~length.exposure+(1|site), family=binomial, data=ungulate)
 
-aictab(list(full3way, twoway, species, trt), modnames=c("full3way", "twoway", "species", "trt")) 
+aictab(list(full, notimetrtintxn, nosptrtintxn, notime, nospecies, notrt, species, trt, time), modnames=c("full", "notimeintxn", "nospintxn", "notime", "nospecies", "notrt", "species", "trt", "time")) 
 #twoway is best fitting model
-confint(twoway,method="Wald")
+confint(notimetrtintxn,method="Wald")
 
 #Species seems to matter more than treatment, so will analyze separately by species now. 
 

@@ -8,9 +8,12 @@
 ###load library###
 library(dplyr)
 library(ggplot2)
+library(lme4)
+library(AICcmodavg)
+library(MuMIn)
 
 ###upload dataset###
-vegandsign<-read.csv("~/ungulate-paper/Analysis/data/working data/vegandsign.csv")
+vegandsign<-read.csv("Analysis/data/working data/vegandsign.csv")
 ###upload reformatted csv where native/exotic is long-form column instead of
 ###two columns#####
 vegandscat_reform<-read.csv("~/ungulate-paper/Analysis/data/working data/vegandscat_reform.csv")
@@ -20,8 +23,33 @@ str(vegandsign)
 summary(vegandscat_reform)
 str(vegandscat_reform)
 
+#try both deer and pigs##
+##on total seedlings##
+bothtot <-lm(totalsdl~pig*deer, vegandsign)
+nointxntot<-lm(totalsdl~pig+deer, vegandsign)
+pigtot <-lm(totalsdl~pig, vegandsign)
+deertot <-lm(totalsdl~deer, vegandsign)
+aictab(list(bothtot, nointxntot, pigtot, deertot))
 
-###r-quared values for input###
+###on native and exotic###
+bothnat <- lm(nativsdl~pig+deer, vegandsign)
+nointxntot<-lm(totalsdl~pig+deer, vegandsign)
+pignat <-lm(nativsdl~pig, vegandsign)
+deernat <-lm(nativsdl~deer, vegandsign)
+aictab(list(bothnat, pignat, deernat))
+
+bothexo <- lm(nonnativesdl~pig+deer, vegandsign)
+pigexo <-lm(nonnativesdl~pig, vegandsign)
+deerexo <-lm(nonnativesdl~deer, vegandsign)
+aictab(list(bothexo, pigexo, deerexo))
+
+###on vines###
+bothvin <- lm(vines~pig+deer, vegandsign)
+pigvin <-lm(vines~pig, vegandsign)
+deervin <-lm(vines~deer, vegandsign)
+aictab(list(bothvin, pigvin, deervin))
+
+###r-squared values for input###
 summary(lm(totalsdl~pig, vegandsign))$r.squared
 ##[1] 0.001490327
 summary(lm(nativsdl~pig, vegandsign))$r.squared
@@ -30,6 +58,7 @@ summary(lm(nonnativesdl~pig, vegandsign))$r.squared
 ##[1] 0.02305202
 summary(lm(vines~pig, vegandsign))$r.squared
 ##[1] 0.001429389
+
 
 ###PIG PLOTS, LEFT-HAND PANELS###
 
