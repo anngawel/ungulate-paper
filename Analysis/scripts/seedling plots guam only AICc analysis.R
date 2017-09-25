@@ -25,7 +25,7 @@ str(ungulate)
 ungulate$island<-factor(ungulate$island)
 ungulate$site<-factor(ungulate$site)
 ungulate$length.exposure<-factor(ungulate$length.exposure)
-#ungulate$length.exposure <- as.integer(ungulate$length.exposure)
+ungulate$length.exposure <- as.integer(ungulate$length.exposure)
 ##keep working with "ungulate" which now only includes
 ##guam##
 
@@ -69,10 +69,16 @@ confint(nullag,method="Wald")
 ##***Neisosperma is now called Ochrosia, so will appear as "Ochrosia oppositifolia" in figures and text
 neiso<-subset(ungulate,species=="neiso")
 survivalne<-cbind(neiso$alive,neiso$dead)
+fencedne <- subset(neiso, trt == "fenced")
+ungulatene <- subset(neiso, trt == "ungulate")
+
 
 #candidate models
 trtne<-glmer(survivalne~trt+(1|site),family=binomial,data=neiso)
 nullne<-glmer(survivalne~1+(1|site),family=binomial,data=neiso)
+ggplot(newdf,aes(island, prop, ymin=low, ymax=upper, fill=trt))+
+  #geom_point(position=position_dodge(width=0.5))+
+  geom_bar(stat="identity", width=0.7, position=position_dodge(width=0.7))
 
 #find best model
 aictab(list(trtne, nullne), modnames=c("trtne", "nullne"))

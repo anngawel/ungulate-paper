@@ -4,7 +4,7 @@
 #################################
 # Graphs of Ungulate Exclosure Experiment without Rota
 # Author: Ann Gawel (AMG)
-# last updated Aug 22, 2017 by AMG 
+# last updated Sep 24, 2017 by AMG 
 ########################
 
 ########################################
@@ -57,8 +57,28 @@ label.df <- data.frame(species = c("carica", "psychotria","morinda","premna"),
 ###bars, but as soon as I do, it doesn't recognize values in newdf####
 
 #Make graph
-###annotate to add asterisks and NS above bars###
 
+p <- ggplot(newdf,aes(species,prop, ymin=low, ymax=upper, fill=trt))+
+  geom_bar(stat="identity", width=0.7, position=position_dodge(width=0.7))+
+  geom_errorbar(width=0.2, position=position_dodge(width=0.7))+
+  ylab("Proportion seedling survival")+
+  ylim(0,1.1)+
+  scale_x_discrete("Species", labels=c("Carica", "Psychotria","Morinda","Premna","Aglaia","Ochrosia"))+
+  scale_fill_manual(values=c("lightgrey", "darkgrey"), breaks=c("fenced","ungulate"), labels=c("No ungulates", "Ungulates"))+
+  theme_minimal()+
+  theme(axis.title.y=element_text(size=10, face="bold"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour="black", fill=NA),
+        axis.line.x=element_line(colour="black"), 
+        axis.line.y=element_line(colour="black"), 
+        legend.title=element_blank(),
+        legend.text=element_text(size=10),
+        strip.text=element_text(size=10, face="italic"),
+        strip.background = element_rect(colour = "white", fill="white"))
+
+###annotate to add asterisks and NS above bars###
 p +annotate("text",x=1, y=0.9,label="*") +annotate("text",x=2,y=0.93,label="*") +annotate("text",x=3,y=0.94,label="*") +annotate("text",x=4,y=0.5,label="*")+annotate("text",x=5,y=0.93,label="NS")+annotate("text",x=6,y=0.97,label="NS")
 
 
