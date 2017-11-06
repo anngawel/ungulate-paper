@@ -12,7 +12,7 @@ library(lubridate)
 library(dplyr)
 
 #import dataset 
-ungulate <- read.csv("Analysis/data/raw data/ungulate2.csv")
+ungulate <- read.csv("seedlingplots.csv")
 
 #summarize data
 summary(ungulate)

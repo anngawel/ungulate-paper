@@ -10,8 +10,8 @@ library(dplyr)
 library(tidyr)
 
 ###load data###
-poop<-read.csv("raw poop sprouts.csv")
-veg<-read.csv("veg_guam_working.csv")
+poop<-read.csv("Analysis/data/raw data/raw poop sprouts.csv")
+veg<-read.csv("Analysis/data/working data/veg_guam_working.csv")
 
 #####Research Questions: 1. Do pigs or deer disperse seeds? 2. Do they disperse more
 ####native or exotic plant seeds?##################################
