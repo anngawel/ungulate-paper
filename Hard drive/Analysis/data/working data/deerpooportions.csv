@@ -1,0 +1,23 @@
+"plant_spp","date_collected","site","date_planted","ung_spp","scat_id","last_count","date_lastcount","native_exotic","vegsite_match","x","prop_scat"
+"Carica papaya","1/26/2010","Ritidian south of grid","1/26/2010","deer","C4",1,"3/10/2010","exotic","ritd grid",1,0.05
+"Mikania micrantha","12/4/2009","S. Blas","12/22/2009","deer","C3",1,"3/14/2010","exotic","sblas",1,0.05
+"na","12/22/2009","Ritidian switchbacks","12/22/2009","deer","C1",0,"3/14/2010","na","switchbacks",15,0.75
+"na","12/4/2009","S. Blas","12/22/2009","deer","C2",0,"3/14/2010","na","sblas",15,0.75
+"na","1/28/2010","Ritidian clearing","1/28/2010","deer","C9",0,"3/14/2010","na","ritd gate",15,0.75
+"na","1/28/2010","Ritidian clearing","1/28/2010","deer","C10",0,"3/14/2010","na","ritd gate",15,0.75
+"na","1/26/2010","Ritidian south of grid","1/26/2010","deer","C7",0,"3/14/2010","na","ritd grid",15,0.75
+"na","1/26/2010","Ritidian south of grid","1/26/2010","deer","C8",0,"3/14/2010","na","ritd grid",15,0.75
+"na","2/16/2010","Anao trail","2/17/2010","deer","C13",0,"3/14/2010","na","anao s",15,0.75
+"na","2/18/2010","Ritidian behind closed pop","2/18/2010","deer","C14",0,"3/14/2010","na","ritd gate",15,0.75
+"na","6/2/2010","Anao grid","6/2/2010","deer","cm1",0,"9/30/2010","na","anao n",15,0.75
+"na","2/2/2010","S. Blas","2/3/2010","deer","C12",0,"3/8/2010","na","sblas",15,0.75
+"na","6/4/2010","Ritd ochrosia grove","6/4/2010","deer","cm3",0,"9/30/2010","na","switchbacks",15,0.75
+"na","6/4/2010","Ritd ochrosia grove","6/4/2010","deer","cm4",0,"9/30/2010","na","switchbacks",15,0.75
+"na","6/9/2010","S. Blas","6/9/2010","deer","cm5",0,"9/30/2010","na","sblas",15,0.75
+"na","6/4/2010","Ritd pig highway","6/4/2010","deer","cm2",0,"9/30/2010","na","ritd gate",15,0.75
+"na","9/24/2010","S. Blas","10/5/2010","deer","cm6",0,"11/5/2010","na","sblas",15,0.75
+"Passiflora sp.","2/2/2010","S. Blas","2/3/2010","deer","C11",8,"3/10/2010","exotic","sblas",2,0.1
+"Passiflora sp.","1/26/2010","Ritidian south of grid","1/26/2010","deer","C4",1,"3/10/2010","exotic","ritd grid",2,0.1
+"unidentified","1/26/2010","Ritidian south of grid","1/26/2010","deer","C4",5,"3/10/2010","unknown","ritd grid",2,0.1
+"unidentified","1/26/2010","Ritidian south of grid","1/26/2010","deer","C5",2,"2/3/2010","unknown","ritd grid",2,0.1
+"Vitex parviflora","1/4/2010","Ritidian monument","1/6/2010","deer","C6",1,"3/14/2010","exotic","na",1,0.05

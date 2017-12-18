@@ -1,0 +1,127 @@
+island,site,species,pig,deer,adult,seedlings
+guam,aafb golf,agma,0.333333333,7.666666667,15,39
+guam,anao n,agma,0.442477876,0.737463127,15,82
+guam,anao s,agma,0.256410256,0.769230769,15,19
+guam,gw,agma,0.0001,0.0001,4,2
+guam,hmu,agma,0.0001,0.25974026,4,61
+guam,nblas,agma,0.0001,0.444444444,16,40
+guam,nw field,agma,0.711743772,14.23487544,21,31
+guam,racetrack,agma,2.380952381,1.428571429,37,25
+guam,ritd gate,agma,1.353965184,4.835589942,5,40
+guam,ritd grid,agma,1.035196687,12.83643892,20,147
+guam,sblas,agma,0.444444444,1.777777778,22,79
+guam,switchbacks,agma,1.10864745,10.86474501,0,34
+guam,tangison,agma,0.258397933,0.0001,3,110
+guam,tartop,agma,0.787401575,23.22834646,15,33
+rota,bird,agma,0.0001,4.923076923,6,3
+rota,cross,agma,0.189753321,0.189753321,1,0
+rota,gravelpit,agma,1.133144476,4.249291785,0,0
+rota,jcs,agma,0.340136054,1.360544218,5,4
+rota,midfig,agma,2.083333333,5.729166667,0,0
+rota,palii north,agma,0.0001,0.0001,1,15
+rota,palii south,agma,0.239808153,0.71942446,9,13
+guam,aafb golf,capa,0.333333333,7.666666667,1,6
+guam,anao n,capa,0.442477876,0.737463127,0,0
+guam,anao s,capa,0.256410256,0.769230769,0,0
+guam,gw,capa,0.0001,0.0001,0,0
+guam,hmu,capa,0.0001,0.25974026,0,0
+guam,nblas,capa,0.0001,0.444444444,0,0
+guam,nw field,capa,0.711743772,14.23487544,0,0
+guam,racetrack,capa,2.380952381,1.428571429,0,0
+guam,ritd gate,capa,1.353965184,4.835589942,0,0
+guam,ritd grid,capa,1.035196687,12.83643892,0,0
+guam,sblas,capa,0.444444444,1.777777778,0,0
+guam,switchbacks,capa,1.10864745,10.86474501,0,0
+guam,tangison,capa,0.258397933,0.0001,0,0
+guam,tartop,capa,0.787401575,23.22834646,0,0
+rota,bird,capa,0.0001,4.923076923,8,0
+rota,cross,capa,0.189753321,0.189753321,0,1
+rota,gravelpit,capa,1.133144476,4.249291785,0,0
+rota,jcs,capa,0.340136054,1.360544218,0,0
+rota,midfig,capa,2.083333333,5.729166667,0,0
+rota,palii north,capa,0.0001,0.0001,1,0
+rota,palii south,capa,0.239808153,0.71942446,0,0
+guam,aafb golf,moci,0.333333333,7.666666667,0,0
+guam,anao n,moci,0.442477876,0.737463127,0,0
+guam,anao s,moci,0.256410256,0.769230769,0,0
+guam,gw,moci,0.0001,0.0001,0,0
+guam,hmu,moci,0.0001,0.25974026,0,0
+guam,nblas,moci,0.0001,0.444444444,1,16
+guam,nw field,moci,0.711743772,14.23487544,1,5
+guam,racetrack,moci,2.380952381,1.428571429,0,0
+guam,ritd gate,moci,1.353965184,4.835589942,3,24
+guam,ritd grid,moci,1.035196687,12.83643892,0,4
+guam,sblas,moci,0.444444444,1.777777778,0,0
+guam,switchbacks,moci,1.10864745,10.86474501,1,0
+guam,tangison,moci,0.258397933,0.0001,0,3
+guam,tartop,moci,0.787401575,23.22834646,0,0
+rota,bird,moci,0.0001,4.923076923,1,0
+rota,cross,moci,0.189753321,0.189753321,25,5
+rota,gravelpit,moci,1.133144476,4.249291785,24,5
+rota,jcs,moci,0.340136054,1.360544218,1,0
+rota,midfig,moci,2.083333333,5.729166667,14,16
+rota,palii north,moci,0.0001,0.0001,4,1
+rota,palii south,moci,0.239808153,0.71942446,0,0
+guam,aafb golf,neop,0.333333333,7.666666667,3,0
+guam,anao n,neop,0.442477876,0.737463127,30,42
+guam,anao s,neop,0.256410256,0.769230769,50,436
+guam,gw,neop,0.0001,0.0001,24,286
+guam,hmu,neop,0.0001,0.25974026,0,2
+guam,nblas,neop,0.0001,0.444444444,17,175
+guam,nw field,neop,0.711743772,14.23487544,0,0
+guam,racetrack,neop,2.380952381,1.428571429,0,0
+guam,ritd gate,neop,1.353965184,4.835589942,15,47
+guam,ritd grid,neop,1.035196687,12.83643892,65,143
+guam,sblas,neop,0.444444444,1.777777778,12,20
+guam,switchbacks,neop,1.10864745,10.86474501,28,30
+guam,tangison,neop,0.258397933,0.0001,18,51
+guam,tartop,neop,0.787401575,23.22834646,0,0
+rota,bird,neop,0.0001,4.923076923,6,0
+rota,cross,neop,0.189753321,0.189753321,9,8
+rota,gravelpit,neop,1.133144476,4.249291785,5,1
+rota,jcs,neop,0.340136054,1.360544218,9,4
+rota,midfig,neop,2.083333333,5.729166667,7,9
+rota,palii north,neop,0.0001,0.0001,4,2
+rota,palii south,neop,0.239808153,0.71942446,14,36
+guam,aafb golf,prob,0.333333333,7.666666667,0,0
+guam,anao n,prob,0.442477876,0.737463127,1,1
+guam,anao s,prob,0.256410256,0.769230769,2,0
+guam,gw,prob,0.0001,0.0001,2,0
+guam,hmu,prob,0.0001,0.25974026,2,0
+guam,nblas,prob,0.0001,0.444444444,0,0
+guam,nw field,prob,0.711743772,14.23487544,0,0
+guam,racetrack,prob,2.380952381,1.428571429,0,0
+guam,ritd gate,prob,1.353965184,4.835589942,0,0
+guam,ritd grid,prob,1.035196687,12.83643892,0,0
+guam,sblas,prob,0.444444444,1.777777778,0,0
+guam,switchbacks,prob,1.10864745,10.86474501,1,0
+guam,tangison,prob,0.258397933,0.0001,1,0
+guam,tartop,prob,0.787401575,23.22834646,0,0
+rota,bird,prob,0.0001,4.923076923,3,0
+rota,cross,prob,0.189753321,0.189753321,0,0
+rota,gravelpit,prob,1.133144476,4.249291785,1,0
+rota,jcs,prob,0.340136054,1.360544218,0,0
+rota,midfig,prob,2.083333333,5.729166667,0,0
+rota,palii north,prob,0.0001,0.0001,1,0
+rota,palii south,prob,0.239808153,0.71942446,1,0
+guam,aafb golf,psma,0.333333333,7.666666667,0,0
+guam,anao n,psma,0.442477876,0.737463127,1,0
+guam,anao s,psma,0.256410256,0.769230769,0,0
+guam,gw,psma,0.0001,0.0001,0,0
+guam,hmu,psma,0.0001,0.25974026,0,0
+guam,nblas,psma,0.0001,0.444444444,2,0
+guam,nw field,psma,0.711743772,14.23487544,0,0
+guam,racetrack,psma,2.380952381,1.428571429,0,0
+guam,ritd gate,psma,1.353965184,4.835589942,0,17
+guam,ritd grid,psma,1.035196687,12.83643892,1,0
+guam,sblas,psma,0.444444444,1.777777778,0,0
+guam,switchbacks,psma,1.10864745,10.86474501,0,0
+guam,tangison,psma,0.258397933,0.0001,0,0
+guam,tartop,psma,0.787401575,23.22834646,10,13
+rota,bird,psma,0.0001,4.923076923,24,7
+rota,cross,psma,0.189753321,0.189753321,0,0
+rota,gravelpit,psma,1.133144476,4.249291785,14,4
+rota,jcs,psma,0.340136054,1.360544218,24,8
+rota,midfig,psma,2.083333333,5.729166667,1,0
+rota,palii north,psma,0.0001,0.0001,14,62
+rota,palii south,psma,0.239808153,0.71942446,5,13
